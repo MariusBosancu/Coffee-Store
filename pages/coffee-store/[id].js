@@ -5,7 +5,7 @@ import Image from "next/image";
 import cls from "classnames";
 //import coffeeStoresData from "../../data/coffee-stores.json"
 import styles from "../../styles/coffee-store.module.css";
-import { fetchCoffeStores } from "../../lib/coffee-stores";
+import fetchCoffeStores from "../../lib/coffee-stores";
 import { StoreContext } from "../../store/store-context";
 import { useContext, useEffect, useState } from "react";
 import { fetcher, isEmpty } from "../../utils/index";
@@ -123,7 +123,33 @@ const CoffeeStore = (initialProps) => {
     } catch (err) {
       console.error("Error upvoting the coffee store", err);
     }
+
+    try {
+      const alo2 = await fetch(
+        "https://capco92-test.ratiopartners.co.uk/api/sitecore/Intelligences/ESGarticles?currentpage=1&type="
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+      console.log(alo2);
+      const { title, name } = initialProps.coffeStore;
+      const response2 = await fetch(
+        "https://capco92-test.ratiopartners.co.uk/api/sitecore/Intelligences/ESGarticles?currentpage=1&type=",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ title, name }),
+        }
+      );
+      console.log(response2);
+    } catch (err) {
+      console.error("Error upvoting the coffee store", err);
+    }
   };
+
   if (error) {
     return <div>Something went wrong by SWR</div>;
   }

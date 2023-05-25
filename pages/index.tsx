@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import useTrackLocation from "../hooks/use-track-location";
 // import { useState } from "react";
 import { ACTION_TYPES, StoreContext } from "@/store/store-context";
+import { stringify } from "querystring";
 
 export async function getStaticProps() {
   //server side
