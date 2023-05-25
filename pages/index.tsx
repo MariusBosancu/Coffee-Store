@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Banner from "../components/banner";
 import Card from "../components/card";
-import { fetchCoffeStores } from "../lib/coffee-stores";
+import fetchCoffeStores from "../lib/coffee-stores";
 // import coffeStoresData from "../data/coffee-stores.json";
 import { useEffect } from "react";
 import useTrackLocation from "../hooks/use-track-location";
