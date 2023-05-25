@@ -23,9 +23,6 @@ export async function getStaticProps(staticProps) {
     },
   };
 }
-const getAPI = () => {
-  return `https://capco92-test.ratiopartners.co.uk/api/sitecore/Intelligences/ESGarticles?currentpage=1&type=`;
-};
 
 export async function getStaticPaths() {
   const coffeeStoresData = await fetchCoffeStores();
@@ -120,31 +117,6 @@ const CoffeeStore = (initialProps) => {
         let count = votingCount + 1;
         setVotingCount(count);
       }
-    } catch (err) {
-      console.error("Error upvoting the coffee store", err);
-    }
-
-    try {
-      const alo2 = await fetch(
-        "https://capco92-test.ratiopartners.co.uk/api/sitecore/Intelligences/ESGarticles?currentpage=1&type="
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
-      console.log(alo2);
-      const { title, name } = initialProps.coffeStore;
-      const response2 = await fetch(
-        "https://capco92-test.ratiopartners.co.uk/api/sitecore/Intelligences/ESGarticles?currentpage=1&type=",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ title, name }),
-        }
-      );
-      console.log(response2);
     } catch (err) {
       console.error("Error upvoting the coffee store", err);
     }
